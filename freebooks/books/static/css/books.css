@@ -1,0 +1,33 @@
+.book-list{
+    border: 1px solid #dbdbdb;
+    background: #f7f7f7;
+    padding: 10px;
+}
+
+.book-detail-thumb{
+    padding-top: 5px;
+}
+
+.book-details{
+    padding-left: 0;
+    list-style: none;
+    margin-top: 5px;
+}
+
+.book-details-title{
+    float: left;
+    width: 150px;
+}
+
+.margin-top-20{
+    margin-top: 20px;
+}
+
+.book-detail-link{
+    color: #424242;
+}
+
+.book-detail-link:hover{
+    color: #000;
+    text-decoration: none;
+}

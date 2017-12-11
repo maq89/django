@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %} Book | {{ book.book_title }} {% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row margin-top-20">
+            <div class="col-md-12">
+                <h2>{{ book.book_title }}</h2>
+                <h4>{{ book.book_sub_title }}</h4>
+            </div>
+        </div>
+        <div class="row margin-top-20">
+            <div class="col-md-3">
+                <img src="/uploads/{{ book.book_cover }}" class="book-detail-thumb img-fluid">
+            </div>
+            <div class="col-md-9">
+                <h5>Book Description</h5>
+                <p>{{ book.book_description|safe }}</p>
+            </div>
+        </div>
+        <div class="row margin-top-20">
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
+                <h5>Book Details</h5>
+                <ul class="book-details">
+                    <li>
+                        <span class="book-details-title">Category: </span>
+                        <span><strong>{{ book.book_category.category_title }}</strong></span>
+                    </li>
+                    <li>
+                        <span class="book-details-title">Author: </span>
+                        <span><strong>{{ book.book_author.author_name }}</strong></span>
+                    </li>
+                    <li>
+                        <span class="book-details-title">Publisher: </span>
+                        <span><strong>{{ book.book_publisher.publisher_name }}</strong></span>
+                    </li>
+                    <li>
+                        <span class="book-details-title">ISBN: </span>
+                        <span><strong>{{ book.book_ISBN }}</strong></span>
+                    </li>
+                    <li>
+                        <span class="book-details-title">Pages: </span>
+                        <span><strong>{{ book.book_pages }}</strong></span>
+                    </li>
+                    <li>
+                        <span class="book-details-title">Year: </span>
+                        <span><strong>{{ book.book_year }}</strong></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row margin-top-20">
+            <div class="col-md-3"></div>
+                <a class="btn btn-lg btn-info" href="{% url 'books:download' book.book_id %}" target="_blank">Downloads</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+

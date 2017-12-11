@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %} Books {% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        {% if books %}
+            {% for book in books %}
+                <div class="row book-list margin-top-20">
+                    <div class="col-md-2 text-center">
+                        <a href="{% url 'books:detail' book.book_id %}">
+                            <img src="/uploads/{{ book.book_cover }}"
+                                 class="img-thumbnail"
+                                title="{{ book.book_title }}">
+                        </a>
+                    </div>
+                    <div class="col-md-10">
+                        <a class="book-detail-link" href="{% url 'books:detail' book.book_id %}">
+                            <h3>{{ book.book_title }}</h3>
+                        </a>
+                        {{ book.book_description|safe|slice:":255" }}
+                        <a class="book-detail-link" href="{% url 'books:detail' book.book_id %}">[...]</a>
+                    </div>
+                </div>
+            {% endfor %}
+
+            {% if is_paginated %}
+                <div class="pagination">
+                    <span class="page-links">
+                        {% if page_obj.has_previous %}
+                            <a href="/books?page={{ page_obj.previous_page_number }}">previous</a>
+                        {% endif %}
+                        <span class="page-current">
+                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        </span>
+                        {% if page_obj.has_next %}
+                            <a href="/books?page={{ page_obj.next_page_number }}">next</a>
+                        {% endif %}
+                    </span>
+                </div>
+            {% endif %}
+
+        {% else %}
+            <h3>Sorry, No Book Available.</h3>
+        {% endif %}
+    </div>
+
+{% endblock %}
